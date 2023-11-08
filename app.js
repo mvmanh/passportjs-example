@@ -67,7 +67,7 @@ app.get('/', (req, res) => {
 
 // Set up a route for the Google login
 app.get('/auth/google',
-  passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/plus.login', 'email', 'https://www.googleapis.com/auth/youtube.readonly'] })
+  passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/plus.login', 'email'] })
 );
 
 // Callback route after Google authentication
