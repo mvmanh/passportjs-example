@@ -62,7 +62,12 @@ passport.deserializeUser(function(user, done) {
 
 // Define routes
 app.get('/', (req, res) => {
+  if (req.isAuthenticated()) {
+    res.redirect('/profile')
+} else {
   res.send('Welcome to the homepage!<br> Click <a href="/auth/google">here</a> to login.');
+}
+  
 });
 
 // Set up a route for the Google login
