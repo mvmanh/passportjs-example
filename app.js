@@ -42,33 +42,32 @@ passport.use(new GoogleStrategy({
   function(accessToken, refreshToken, profile, done) {
     console.log(`accessToken: ${accessToken}`)
     console.log(`refreshToken: ${refreshToken}`)
-    console.log(profile)
+    //console.log(profile)
     return done(null, profile);
   }
   ));
 
 passport.serializeUser(function(user, done) {
     console.log(`serializeUser`)
-    console.log(user)
+
     done(null, user);
 });
 
 // Deserialize user from session
 passport.deserializeUser(function(user, done) {
     console.log(`deserializeUser`)
-    console.log(user)
     done(null, user);
 });
   
 
 // Define routes
 app.get('/', (req, res) => {
-  res.send('Welcome to the homepage!');
+  res.send('Welcome to the homepage!<br> Click <a href="/auth/google">here</a> to login.');
 });
 
 // Set up a route for the Google login
 app.get('/auth/google',
-  passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/plus.login'] })
+  passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/plus.login', 'email', 'https://www.googleapis.com/auth/youtube.readonly'] })
 );
 
 // Callback route after Google authentication

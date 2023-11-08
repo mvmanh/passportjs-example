@@ -9,8 +9,10 @@
   <ul>
     <li><%= user.id %></li>
     <li><%= user.provider %></li>
+    <li>Email: <%= user.emails[0].value %></li>
   </ul>
   <textarea cols="50" rows="10"><%= msg %></textarea>
+<br>
   <a href="/logout">Logout</a>
 </body>
 </html>
