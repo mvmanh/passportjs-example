@@ -35,9 +35,9 @@ app.use(passport.session());
 
 // Configure the Google Strategy
 passport.use(new GoogleStrategy({
-    clientID: 'your-google-client-id',
-    clientSecret: 'your-google-client-secret',
-    callbackURL: 'http://localhost:3000/auth/google/callback', // This callback URL should match the one you configured in your Google Developer Console
+    clientID: '398234135372-b4bnplinbq6mu3j088lj0tk73vku7egu.apps.googleusercontent.com',
+    clientSecret: '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',
+    callbackURL: 'https://passport-login-6tmp.onrender.com/auth/google/callback', // This callback URL should match the one you configured in your Google Developer Console
   },
   function(accessToken, refreshToken, profile, done) {
     return done(null, profile);
