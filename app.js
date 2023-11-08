@@ -40,6 +40,9 @@ passport.use(new GoogleStrategy({
     callbackURL: 'https://passport-login-6tmp.onrender.com/auth/google/callback', // This callback URL should match the one you configured in your Google Developer Console
   },
   function(accessToken, refreshToken, profile, done) {
+    console.log(`accessToken: ${accessToken}`)
+    console.log(`refreshToken: ${refreshToken}`)
+    console.log(profile)
     return done(null, profile);
   }
   ));
@@ -80,7 +83,7 @@ app.get('/auth/google/callback',
 app.get('/profile', (req, res) => {
     if (req.isAuthenticated()) {
         console.log(req.user)
-      res.render('profile.ejs', { user: req.user });
+      res.render('profile.ejs', { user: req.user, msg: JSON.stringify(req.user) });
     } else {
       res.redirect('/');
     }
